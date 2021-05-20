@@ -55,6 +55,7 @@ void tree(const char *path, int indentLength)
     if (!isFile(name))
     {
       printf("- %s\n", entry->d_name);
+      strcat(name, "/");
       tree(name, indentLength + 4);
     }
     else
