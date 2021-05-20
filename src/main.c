@@ -39,13 +39,12 @@ void tree(const char *path, int indentLength)
   if (dir == NULL)
     return;
 
+  // Skip "." and ".."
   readdir(dir);
   readdir(dir);
 
   while ((entry = readdir(dir)) != NULL)
   {
-    // if (!isFile(entry->d_name))
-    //   tree(entry->d_name, indentLength + 4);
     char name[3000] = "";
     strcat(name, path);
     strcat(name, entry->d_name);
