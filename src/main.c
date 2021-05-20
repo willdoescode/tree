@@ -11,6 +11,10 @@ int main(int argc, const char *argv[])
 {
   for (int i = 0; i < argc; i++)
     tree(argv[i], 0);
+
+  if (argc == 1)
+    tree("./", 0);
+
   return 0;
 }
 
