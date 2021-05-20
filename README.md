@@ -1,6 +1,6 @@
 # tree
 
-![demo](assets/demo.png)
+![demo](assets/newdemo.png)
 
 #### Building
 ```shell
