@@ -16,7 +16,13 @@ int main(int argc, const char *argv[])
   }
 
   for (int i = 0; i < argc; i++)
-    tree(argv[i], 0);
+  {
+    char x[200] = "";
+    strcat(x, argv[i]);
+    strcat(x, "/");
+
+    tree(x, 0);
+  }
 
   return 0;
 }
