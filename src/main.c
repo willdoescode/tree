@@ -49,6 +49,7 @@ void tree(const char *path, int indentLength)
 {
   struct dirent *entry;
   DIR *dir = opendir(path);
+
   if (dir == NULL)
     return;
 
@@ -56,7 +57,7 @@ void tree(const char *path, int indentLength)
   readdir(dir);
   readdir(dir);
 
-  while ((entry = readdir(dir)) != NULL)
+  while ((entry = readdir(dir)))
   {
     char name[sizeof(entry->d_name) + sizeof(path) + 1] = "";
     strcat(name, path);
