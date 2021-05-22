@@ -17,7 +17,7 @@ int main(int argc, const char *argv[])
 
   for (int i = 0; i < argc; i++)
   {
-    char x[200] = "";
+    char x[sizeof(argv[i] + 1)] = "";
     strcat(x, argv[i]);
     strcat(x, "/");
 
@@ -27,19 +27,19 @@ int main(int argc, const char *argv[])
   return 0;
 }
 
-int isFile(const char *name)
+int isDir(const char *name)
 {
   DIR *directory = opendir(name);
 
   if (directory != NULL)
   {
     closedir(directory);
-    return 0;
+    return 1;
   }
 
   if (errno == ENOTDIR)
   {
-    return 1;
+    return 0;
   }
 
   return -1;
@@ -58,14 +58,14 @@ void tree(const char *path, int indentLength)
 
   while ((entry = readdir(dir)) != NULL)
   {
-    char name[3000] = "";
+    char name[sizeof(entry->d_name) + sizeof(path) + 1] = "";
     strcat(name, path);
     strcat(name, entry->d_name);
 
     for (int i = 0; i < indentLength; i++)
       printf(" ");
 
-    if (!isFile(name))
+    if (isDir(name))
     {
       printf("- %s/\n", entry->d_name);
       strcat(name, "/");
