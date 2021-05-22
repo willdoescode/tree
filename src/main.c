@@ -70,11 +70,9 @@ void tree(const char *path, int indentLength)
       printf("- %s/\n", entry->d_name);
       strcat(name, "/");
       tree(name, indentLength + 4);
+      continue;
     }
-    else
-    {
-      printf("| %s\n", entry->d_name);
-    }
+    printf("| %s\n", entry->d_name);
   }
 
   closedir(dir);
