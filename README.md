@@ -1,6 +1,7 @@
 # tree
 
 ![demo](assets/newdemo.png)
+![bench](assets/bench.png)
 
 #### Building
 ```shell
